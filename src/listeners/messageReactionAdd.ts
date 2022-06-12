@@ -24,7 +24,7 @@ export class UserEvent extends Listener {
       if (trackedAll.includes(reaction.message.id as any)) {
         this.container.starboardEvents.emit("starboardUpdateMsg", reaction)
       } else {
-        if (reaction.count <= await config.get("stars")) {
+        if (reaction.count >= await config.get("stars")) {
           if (await config.get("channelId")  == null) {
             this.container.starboardEvents.emit("starboardChannelNull")
           } else {
