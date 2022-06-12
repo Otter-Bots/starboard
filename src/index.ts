@@ -1,13 +1,9 @@
-import { ApplicationCommandRegistries, RegisterBehavior, SapphireClient } from "@sapphire/framework";
+import { ApplicationCommandRegistries, RegisterBehavior} from "@sapphire/framework";
 import "dotenv/config";
 import "@sapphire/plugin-logger/register";
 import "./lib/db.js"
-const client = new SapphireClient({
-    intents: [
-        'GUILDS',
-        'GUILD_MESSAGES'
-    ],
-    loadDefaultErrorListeners: true,
-});
+import "./lib/starboard/aug.js"
+import { starboardClient } from "./lib/starboard/aug.js";
+const client = new starboardClient()
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior.Overwrite)
 client.login();
