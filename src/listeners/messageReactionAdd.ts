@@ -22,7 +22,6 @@ export class UserEvent extends Listener {
     const trackedAll = await tracked.get(`array`);
     if (reaction.emoji.name == "⭐") {
       if (trackedAll.includes(reaction.message.id as any)) {
-        console.log("Test")
         this.container.starboardEvents.emit("starboardUpdateMsg", reaction)
       } else {
         if (reaction.count <= await config.get("stars")) {

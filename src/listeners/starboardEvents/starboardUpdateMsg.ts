@@ -11,12 +11,9 @@ export class UserEvent extends Listener {
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
     const { client } = this.container
     const msgId = await tracked.get(`_${reaction.message.id}`);
-    console.log(msgId)
     const channelId = await config.get("channelId");
-    console.log(channelId)
     const channel = client.channels.cache.get(channelId) as TextChannel;
     const embed = this.container.starboard.utils.embed(`${reaction.message.content}`, `${reaction.count}`, config);
     await (await channel?.messages.fetch(msgId)).edit({ embeds: [embed]});
-    console.log("Test!")
   }
 }
