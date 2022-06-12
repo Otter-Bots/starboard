@@ -4,6 +4,7 @@ import { botConfig } from '../../config.js';
 
 @ApplyOptions<CommandOptions>({
 	description: 'Configure StartBoard',
+	preconditions: ['serverOwnerOnly']
 })
 export class UserCommand extends Command {
 	public async chatInputRun(interaction: Command.ChatInputInteraction) {
