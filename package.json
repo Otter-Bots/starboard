@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsc && NODE_ENV=dev node .",
-    "prod": "tsc && NODE_ENV=prod node ."
+    "dev": "tsc && node .",
+    "prod": "tsc && node ."
   },
   "keywords": [],
   "author": "",
@@ -14,17 +14,22 @@
     "@sapphire/decorators": "^4.3.4",
     "@sapphire/framework": "^3.0.0-next.080c438.0",
     "@sapphire/plugin-logger": "^2.2.1",
+    "@skyra/start-banner": "^1.0.0",
     "better-sqlite3": "^7.5.3",
     "colorette": "^2.0.17",
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
-    "quick.db": "^9.0.2",
-    "promise-mysql": "^5.2.0"
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.1",
+    "promise-mysql": "^5.2.0",
+    "quick.db": "^9.0.2"
   },
   "type": "module",
   "devDependencies": {
     "@sapphire/ts-config": "^3.3.4",
     "@types/better-sqlite3": "^7.5.0",
+    "@types/figlet": "^1.5.4",
+    "@types/gradient-string": "^1.1.2",
     "@types/node": "^17.0.41"
   }
 }
