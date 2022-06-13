@@ -1,9 +1,9 @@
-import { MessageEmbed } from "discord.js";
+import { Message, MessageEmbed } from "discord.js";
 //import { botConfig } from "../../config.js";
 import { container } from "@sapphire/framework";
 
 class utils {
-    public embed(message: string, stars: string/*, config: any | undefined*/) {
+    public embed(message: Message, stars: string/*, config: any | undefined*/) {
         //if (config.get("webhook_enabled") == true) {
         //    const embed = new MessageEmbed()
         //   .setColor('RANDOM')
@@ -16,8 +16,12 @@ class utils {
             const embed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle("Starboard")
-            .setDescription(message)
-            .addField("Stars", stars, true)
+            .setDescription(message.content)
+            .addFields(
+                {name: "stars", value: stars, inline: true},
+                {name: "Message URL", value: message.url, inline: false}
+            )
+            .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL()})
             return embed
        // }
     }

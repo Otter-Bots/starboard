@@ -13,7 +13,7 @@ export class UserEvent extends Listener {
     const msgId = await tracked.get(`_${reaction.message.id}`);
     const channelId = await config.get("channelId");
     const channel = client.channels.cache.get(channelId) as TextChannel;
-    const embed = this.container.starboard.utils.embed(`${reaction.message.content}`, `${reaction.count}`, config);
+    const embed = this.container.starboard.utils.embed(reaction.message, `${reaction.count}`, config);
     await (await channel?.messages.fetch(msgId)).edit({ embeds: [embed]});
   }
 }

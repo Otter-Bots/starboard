@@ -9,7 +9,7 @@ export class UserEvent extends Listener {
   public async run(reaction: any) {
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
     const tracked = await this.container.db.table(`tracked_${reaction.message.guildId}`);
-    const embed = this.container.starboard.utils.embed(`${reaction.message.content}`, `${reaction.count}`, config);
+    const embed = this.container.starboard.utils.embed(reaction.message, `${reaction.count}`, config);
     const channelId = await config.get("channelId")
     const channel = this.container.client.channels.cache.get(channelId) as TextChannel;
     const msg = await channel.send({ embeds: [embed]})
