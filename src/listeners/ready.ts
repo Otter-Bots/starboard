@@ -11,6 +11,12 @@ import { blue } from 'colorette';
 })
 export class UserEvent extends Listener {
   public run() {
+    const { client, logger } = this.container;
+    const stores = [...client.stores.values()];
+    const last = stores.pop()!;
+
+    for (const store of stores) logger.info(this.styleStore(store));
+    logger.info(this.styleStore(last));
     console.log(
       createBanner(
         {
@@ -19,22 +25,12 @@ export class UserEvent extends Listener {
           ],
           extra: [
             gradient.pastel(`NODE_ENV=${process.env.NODE_ENV}`),
-            `${this.printStoreDebugInformation()}`
           ]
         }
       )
     )
   }
-  private printStoreDebugInformation() {
-    const { client, logger } = this.container;
-    const stores = [...client.stores.values()];
-    const last = stores.pop()!;
-
-    for (const store of stores) logger.info(this.styleStore(store));
-    logger.info(this.styleStore(last));
-  }
-
   private styleStore(store: Store<any>) {
-   return `${gradient.passion(`Loaded`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.name}`) : gradient.pastel(`${store.name}`)}`
+   return `${gradient.passion(`Loaded`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.size}`) : gradient.pastel(`${store.size}`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.name}`) : gradient.pastel(`${store.name}`)}`
   }
 }
