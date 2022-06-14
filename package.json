@@ -2,16 +2,37 @@
   "name": "starboard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run dev:build && node .",
+    "prod": "npm run prod:build && node dist/index.cjs",
+    "dev:build": "tsc",
+    "prod:build": "tsup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sapphire/decorators": "^4.3.4",
+    "@sapphire/framework": "^3.0.0-next.080c438.0",
+    "@sapphire/plugin-logger": "^2.2.1",
+    "@skyra/start-banner": "^1.0.0",
+    "better-sqlite3": "^7.5.3",
+    "colorette": "^2.0.17",
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.1",
+    "promise-mysql": "^5.2.0",
+    "quick.db": "^9.0.2"
   },
+  "type": "module",
   "devDependencies": {
-  },
-  "type": "module"
+    "@sapphire/ts-config": "^3.3.4",
+    "@types/better-sqlite3": "^7.5.0",
+    "@types/figlet": "^1.5.4",
+    "@types/gradient-string": "^1.1.2",
+    "@types/node": "^17.0.41",
+    "tsup": "^6.1.2"
+  }
 }
