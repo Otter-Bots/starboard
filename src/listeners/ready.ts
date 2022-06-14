@@ -31,6 +31,6 @@ export class UserEvent extends Listener {
     )
   }
   private styleStore(store: Store<any>) {
-   return `${gradient.passion(`Loaded`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.size}`) : gradient.pastel(`${store.size}`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.name}`) : gradient.pastel(`${store.name}`)}`
+   return `${gradient.passion(`Loaded`)} ${process.env.NODE_ENV == "dev" ? blue(`${store.size}`) : gradient.pastel(`${store.size}`)} ${process.env.NODE_ENV == "prod" ? blue(`${store.name}`) : gradient.pastel(`${store.name}`)}`
   }
 }
