@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsc && node .",
-    "prod": "tsc && node ."
+    "prod": "tsup && node dist/index.cjs"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "@types/better-sqlite3": "^7.5.0",
     "@types/figlet": "^1.5.4",
     "@types/gradient-string": "^1.1.2",
-    "@types/node": "^17.0.41"
+    "@types/node": "^17.0.41",
+    "tsup": "^6.1.2"
   }
 }
