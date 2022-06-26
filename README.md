@@ -9,4 +9,4 @@ If you don't understand something, discovered a bug, or are having issues, pleas
 - /config stars <amount> - This command allows you to configure the amount of stars it takes to put a message on the starboard.
 
 ### Coming Soon
- - /config webhook <webhookurl> - This command allows you to make a webhook post into the starboard instead of StarBot.
+ - /config webhook <webhookurl> - This command allows you to make a webhook post into the starboard channel, instead of StarBot.
