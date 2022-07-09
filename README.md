@@ -1,5 +1,5 @@
 # Starboard Bot
-A starboard bot for Discord, that utilizes webhooks (that you can customize!) to send starboard messages.
+StarBot is an advanced starboard bot with many useful features than can be enabled/disabled to your liking.
 
 ### Need Help?
 If you don't understand something, discovered a bug, or are having issues, please join our Discord server for support and general chit chat with our community [here](https://discord.gg/TAB8CP5wPt).
