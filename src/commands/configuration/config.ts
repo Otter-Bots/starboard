@@ -1,13 +1,13 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Command, CommandOptions }from "@sapphire/framework";
+import { Command, CommandOptions, ApplicationCommandRegistry }from "@sapphire/framework";
 import { botConfig } from '../../config.js';
-
+import type { CommandInteraction } from 'discord.js';
 @ApplyOptions<CommandOptions>({
 	description: 'Configure StartBoard',
 	preconditions: ['serverOwnerOnly']
 })
 export class UserCommand extends Command {
-	public async chatInputRun(interaction: Command.ChatInputInteraction) {
+	public async chatInputRun(interaction: CommandInteraction) {
 		const subcommand = interaction.options.getSubcommand(true);
 		if (subcommand === 'channel') {
 		  return await this.channel(interaction);
@@ -17,14 +17,14 @@ export class UserCommand extends Command {
 		return interaction.reply('Invalid sub command');
 	}
 
-	private async channel(interaction: Command.ChatInputInteraction) {
+	private async channel(interaction: CommandInteraction) {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const channel = interaction.options.getChannel('selector');
 		await config.set("channelId", `${channel?.id}`)
 		interaction.reply(`Set the channel to ${channel}`)
 	}
 	
-	private async stars(interaction: Command.ChatInputInteraction) {
+	private async stars(interaction: CommandInteraction) {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const stars = interaction.options.getNumber("amount");
 		await config.set("stars", `${stars}`)
@@ -40,7 +40,7 @@ export class UserCommand extends Command {
 	//	}
 	//	interaction.reply(`Changed webhook settings!`)
 	//}
-	public override registerApplicationCommands(registry: Command.Registry) {
+	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry.registerChatInputCommand((builder) =>
 			builder
 				.setName(this.name)
