@@ -14,7 +14,12 @@ export class UserCommand extends Command {
 		} else if (subcommand === 'stars') {
 		  return await this.stars(interaction);
 		}
+		else if (subcommand === 'webhook') {
+		  return await this.webhook(interaction);
+		}
+		else {
 		return interaction.reply('Invalid sub command');
+		}
 	}
 
 	private async channel(interaction: CommandInteraction) {
@@ -30,16 +35,16 @@ export class UserCommand extends Command {
 		await config.set("stars", `${stars}`)
 		interaction.reply(`Set the Stars to ${stars}`)
 	}
-	//private async webhook(interaction: Command.ChatInputInteraction) {
-	//	const config = await this.container.db.table(`config_${interaction.guildId}`);
-	//	const enabled = interaction.options.getBoolean('enabled');
-	//	config.set("webhook_enabled", enabled)
-	//	if (enabled == true) {
-	//		const url =  interaction.options.getString("url")
-	//		config.set("webhook_url", url);
-	//	}
-	//	interaction.reply(`Changed webhook settings!`)
-	//}
+	private async webhook(interaction: CommandInteraction) {
+		const config = await this.container.db.table(`config_${interaction.guildId}`);
+		const enabled = interaction.options.getBoolean('enabled');
+		config.set("webhook_enabled", enabled)
+		if (enabled == true) {
+			const url =  interaction.options.getString("url")
+			config.set("webhook_url", url);
+		}
+		interaction.reply(`Changed webhook settings!`)
+	}
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry.registerChatInputCommand((builder) =>
 			builder
@@ -57,13 +62,13 @@ export class UserCommand extends Command {
 						.setDescription(`Set the stars that ${botConfig.botName} will respond to`)
 						.addNumberOption((option) => option.setName('amount').setDescription('amount of stars').setRequired(true))
 				)
-			//	.addSubcommand((command) =>
-			//		command
-			//			.setName('webhook')
-			//			.setDescription(`Configure the webhook that ${botConfig.botName} will post to (disabled by default`)
-			//			.addBooleanOption((option) => option.setName('enabled').setDescription('toggle the webhook').setRequired(true))
-			//			.addStringOption((option) => option.setName("url").setDescription("Whats the webhook url (not needed if you disabled the webhook)"))
-			//	)
+				.addSubcommand((command) =>
+					command
+						.setName('webhook')
+						.setDescription(`Configure the webhook that ${botConfig.botName} will post to (disabled by default`)
+						.addBooleanOption((option) => option.setName('enabled').setDescription('toggle the webhook').setRequired(true))
+						.addStringOption((option) => option.setName("url").setDescription("Whats the webhook url (not needed if you disabled the webhook)"))
+					)
 		)
 		{
 			idHints: ['984540176133009448']
