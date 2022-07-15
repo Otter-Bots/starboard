@@ -4,10 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npm run dev:build && node .",
-    "prod": "npm run prod:build && node dist/index.cjs",
-    "dev:build": "tsc",
-    "prod:build": "tsup"
+    "dev": "npm run build && node .",
+    "build": "tsc",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
