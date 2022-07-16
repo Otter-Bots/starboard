@@ -10,11 +10,11 @@ export class UserEvent extends Listener {
     try {
     const tracked = await this.container.db.table(`tracked_${reaction.message.guildId}`);
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
-    if (config.get("webhook_enabled") == true) {
-      const webhook = config.get("webhook_url");
+    if (await config.get("webhook_enabled") == true) {
+      const webhook = await config.get("webhook_url");
       const embed = this.container.starboard.utils.embed(reaction.message, reaction.count);
-      const webhookClient = new WebhookClient(webhook);
-      await webhookClient.editMessage(tracked.get(`_${reaction.message.id}`), {
+      const webhookClient = new WebhookClient({url: webhook});
+      await webhookClient.editMessage(await tracked.get(`_${reaction.message.id}`), {
         embeds: [embed]
       });
     } else {

@@ -30,8 +30,8 @@ export class UserCommand extends Command {
 		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const channel = interaction.options.getChannel('selector') as TextChannel;
-		channel?.permissionOverwrites.create(interaction.user.id, { SEND_MESSAGES: true, VIEW_CHANNEL: true });
-		channel.permissionOverwrites.create(channel.guild.roles.everyone, { VIEW_CHANNEL: true, ADD_REACTIONS: false, SEND_MESSAGES: false });
+		channel.permissionOverwrites.create(channel.guild.roles.everyone, {ADD_REACTIONS: false});
+		channel?.permissionOverwrites.create(`${this.container.client.application?.id}`, { SEND_MESSAGES: true, VIEW_CHANNEL: true });
 		await config.set("channelId", `${channel?.id}`)
 		interaction.reply(`Set the channel to ${channel}`)
 		} catch (err) {

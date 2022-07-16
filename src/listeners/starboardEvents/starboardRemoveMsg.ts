@@ -11,12 +11,12 @@ export class UserEvent extends Listener {
     try {
     const tracked = await this.container.db.table(`tracked_${reaction.message.guildId}`);
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
-    if (config.get("webhook_enabled") == true) {
-      const webhook = config.get("webhook_url");
-      const webhookClient = new WebhookClient(webhook);
-      webhookClient.delete(tracked.get(`_${reaction.message.id}`));
-      tracked.delete(`_${reaction.message.id}`)
-      tracked.pull(`array`,`${reaction.message.id}`)
+    if (await config.get("webhook_enabled") == true) {
+      const webhook = await config.get("webhook_url");
+      const webhookClient = new WebhookClient({url: webhook});
+      webhookClient.deleteMessage(await tracked.get(`_${reaction.message.id}`));
+      await tracked.delete(`_${reaction.message.id}`)
+      await tracked.pull(`array`,`${reaction.message.id}`)
     } else {
       const { client } = this.container
       const msgId = await tracked.get(`_${reaction.message.id}`);
@@ -27,7 +27,7 @@ export class UserEvent extends Listener {
       await tracked.pull(`array`,`${reaction.message.id}`)
     }
   } catch (err) {
-    reaction.message.channel.send(`Error: ${err}`);
+   reaction.message.channel.send(`Error: ${err}`);
   }
   }
 }
