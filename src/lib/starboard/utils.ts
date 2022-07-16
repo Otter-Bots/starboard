@@ -18,7 +18,7 @@ class utils {
             .setTitle("Starboard")
             .setDescription(message.content)
             .addFields(
-                {name: "Stars", value: Stars, inline: true},
+                {name: "Stars", value: stars, inline: true},
                 {name: "Message URL", value: message.url, inline: false}
             )
             .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL()})
