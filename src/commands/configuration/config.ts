@@ -1,7 +1,7 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, CommandOptions, ApplicationCommandRegistry }from "@sapphire/framework";
 import { botConfig } from '../../config.js';
-import type { CommandInteraction } from 'discord.js';
+import type { CommandInteraction, TextChannel } from 'discord.js';
 @ApplyOptions<CommandOptions>({
 	description: 'Configure StartBoard',
 	preconditions: ['serverOwnerOnly']
@@ -29,7 +29,9 @@ export class UserCommand extends Command {
 	private async channel(interaction: CommandInteraction) {
 		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
-		const channel = interaction.options.getChannel('selector');
+		const channel = interaction.options.getChannel('selector') as TextChannel;
+		channel?.permissionOverwrites.create(interaction.user.id, { SEND_MESSAGES: true, VIEW_CHANNEL: true });
+		channel.permissionOverwrites.create(channel.guild.roles.everyone, { VIEW_CHANNEL: true, ADD_REACTIONS: false, SEND_MESSAGES: false });
 		await config.set("channelId", `${channel?.id}`)
 		interaction.reply(`Set the channel to ${channel}`)
 		} catch (err) {
