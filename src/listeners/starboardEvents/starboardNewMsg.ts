@@ -7,6 +7,7 @@ import { TextChannel, WebhookClient } from 'discord.js';
 })
 export class UserEvent extends Listener {
   public async run(reaction: any) {
+    try {
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
     const tracked = await this.container.db.table(`tracked_${reaction.message.guildId}`);
     if(config.get("webhook_enabled") == true) {
@@ -23,6 +24,9 @@ export class UserEvent extends Listener {
       const msg = await channel.send({ embeds: [embed]})
       await tracked.set(`_${reaction.message.id}`, msg.id)
       await tracked.push(`array`,`${reaction.message.id}`)
+    }
+    } catch (err) {
+      reaction.message.channel.send(`Error: ${err}`);
     }
   }
 }

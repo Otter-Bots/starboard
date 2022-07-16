@@ -8,6 +8,7 @@ import type { CommandInteraction } from 'discord.js';
 })
 export class UserCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
+		try {
 		const subcommand = interaction.options.getSubcommand(true);
 		if (subcommand === 'channel') {
 		  return await this.channel(interaction);
@@ -20,22 +21,34 @@ export class UserCommand extends Command {
 		else {
 		return interaction.reply('Invalid sub command');
 		}
+	} catch (err) {
+		interaction.reply(`Error: ${err}`);
+	}
 	}
 
 	private async channel(interaction: CommandInteraction) {
+		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const channel = interaction.options.getChannel('selector');
 		await config.set("channelId", `${channel?.id}`)
 		interaction.reply(`Set the channel to ${channel}`)
+		} catch (err) {
+			interaction.reply(`Error: ${err}`);
+		}
 	}
 	
 	private async stars(interaction: CommandInteraction) {
+		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const stars = interaction.options.getNumber("amount");
 		await config.set("stars", `${stars}`)
 		interaction.reply(`Set the Stars to ${stars}`)
+		} catch (err) {
+			interaction.reply(`Error: ${err}`);
+		}
 	}
 	private async webhook(interaction: CommandInteraction) {
+		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const enabled = interaction.options.getBoolean('enabled');
 		config.set("webhook_enabled", enabled)
@@ -44,6 +57,9 @@ export class UserCommand extends Command {
 			config.set("webhook_url", url);
 		}
 		interaction.reply(`Changed webhook settings!`)
+	} catch (err) {
+		interaction.reply(`Error: ${err}`);
+	}
 	}
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry.registerChatInputCommand((builder) =>
