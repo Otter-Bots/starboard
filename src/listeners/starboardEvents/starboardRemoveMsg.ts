@@ -13,9 +13,9 @@ export class UserEvent extends Listener {
     const config = await this.container.db.table(`config_${reaction.message.guildId}`);
     if (await config.get("webhook_enabled") == true) {
       const webhook = await config.get("webhook_url");
+      this.container.logger.info(`Deleted message from starboard \n GuildID: ${reaction.message.guildId} \n MessageID: ${reaction.message.id} \n Tracked Message ID ${await tracked.get(`_${reaction.message.id}`)}`);
       const webhookClient = new WebhookClient({url: webhook});
       webhookClient.deleteMessage(await tracked.get(`_${reaction.message.id}`));
-      this.container.logger.info(`Deleted message from starboard \n GuildID: ${reaction.message.guildId} \n MessageID: ${reaction.message.id} \n Tracked Message ID ${await tracked.get(`_${reaction.message.id}`)}`);
       await tracked.delete(`_${reaction.message.id}`)
       await tracked.pull(`array`,`${reaction.message.id}`)
     } else {
