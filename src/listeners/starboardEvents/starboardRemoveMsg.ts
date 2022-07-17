@@ -1,5 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Listener, ListenerOptions } from '@sapphire/framework';
+import { Listener, ListenerOptions} from '@sapphire/framework';
 import { MessageReaction, TextChannel, WebhookClient } from 'discord.js';
 
 @ApplyOptions<ListenerOptions>({
@@ -15,6 +15,7 @@ export class UserEvent extends Listener {
       const webhook = await config.get("webhook_url");
       const webhookClient = new WebhookClient({url: webhook});
       webhookClient.deleteMessage(await tracked.get(`_${reaction.message.id}`));
+      this.container.logger.info(`Deleted message from starboard \n GuildID: ${reaction.message.guildId} \n MessageID: ${reaction.message.id} \n Tracked Message ID ${await tracked.get(`_${reaction.message.id}`)}`);
       await tracked.delete(`_${reaction.message.id}`)
       await tracked.pull(`array`,`${reaction.message.id}`)
     } else {
