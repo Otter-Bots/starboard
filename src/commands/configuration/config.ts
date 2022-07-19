@@ -83,9 +83,9 @@ export class UserCommand extends Command {
 				.addSubcommand((command) =>
 					command
 						.setName('webhook')
-						.setDescription(`Configure the webhook that ${botConfig.botName} will post to (disabled by default)`)
+						.setDescription(`Configure the webhook that ${botConfig.botName} will post to.`)
 						.addBooleanOption((option) => option.setName('enabled').setDescription('toggle the webhook').setRequired(true))
-						.addStringOption((option) => option.setName("url").setDescription("Whats the webhook url (not needed if you disabled the webhook)"))
+						.addStringOption((option) => option.setName("url").setDescription("Enter the webhook URL."))
 					)
 		)
 		{
