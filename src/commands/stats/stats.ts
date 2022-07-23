@@ -10,7 +10,7 @@ export class UserCommand extends Command {
         const embed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle(`${botConfig.botName} | Stats`)
-        .setDescription(`${botConfig.botName} Is a bot made by the OtterBots`)
+        .setDescription(`${botConfig.botName} is a bot made by Otter Bots`)
         .addFields(
             { name: 'Users', value: `${this.container.client.users.cache.size}`, inline: true },
             { name: 'Channels', value: `${this.container.client.channels.cache.size}`, inline: true },
