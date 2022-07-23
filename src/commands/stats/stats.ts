@@ -26,7 +26,7 @@ export class UserCommand extends Command {
 				.setDescription(this.description)
 		)
 		{
-			idHints: ['1000429157043404850']
+			idHints: ['1000429157043404850', '1000431134791958589']
 		}
 	}
 }
