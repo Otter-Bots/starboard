@@ -1,3 +1,3 @@
 export const botConfig = {
-    botName: "StarBot"
+    botName: "Starboard"
 }
