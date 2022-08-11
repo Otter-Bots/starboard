@@ -10,7 +10,7 @@ export class UserCommand extends Command {
         const embed = new MessageEmbed()
         .setColor('RANDOM')
         .setTitle(`${botConfig.botName} | Stats`)
-        .setDescription(`${botConfig.botName} is an advanced starboard bot with many useful features than can be enabled/disabled to your liking. `)
+        .setDescription(`${botConfig.botName} is an advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. `)
         .addFields(
             { name: 'Users', value: `${this.container.client.users.cache.size}`, inline: true },
             { name: 'Channels', value: `${this.container.client.channels.cache.size}`, inline: true },
