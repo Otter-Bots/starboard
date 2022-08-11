@@ -1,5 +1,5 @@
-# Starboard Bot
-StarBot is an advanced starboard bot with many useful features that are designed to carry out your server's Starboard needs. 
+# Starboard
+An advanced starboard bot with many useful features that are designed to carry out your server's Starboard needs. 
 
 ### Commands
 - /config channel <channelname> - This command allows you to configure which channel StarBot will post to.
