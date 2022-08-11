@@ -3,7 +3,7 @@ import { Command, CommandOptions, ApplicationCommandRegistry }from "@sapphire/fr
 import { botConfig } from '../../config.js';
 import { CommandInteraction, MessageEmbed} from 'discord.js';
 @ApplyOptions<CommandOptions>({
-	description: 'Get stats about the bot',
+	description: 'Get stats about Starboard!',
 })
 export class UserCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
