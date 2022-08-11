@@ -33,7 +33,7 @@ export class UserCommand extends Command {
 		channel.permissionOverwrites.create(channel.guild.roles.everyone, {ADD_REACTIONS: false});
 		channel?.permissionOverwrites.create(`${this.container.client.application?.id}`, { SEND_MESSAGES: true, VIEW_CHANNEL: true });
 		await config.set("channelId", `${channel?.id}`)
-		interaction.reply(`Set the channel to ${channel}`)
+		interaction.reply(`Set the channel to ${channel}!`)
 		} catch (err) {
 			interaction.reply(`Error: ${err}`);
 		}
@@ -44,7 +44,7 @@ export class UserCommand extends Command {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const stars = interaction.options.getNumber("amount");
 		await config.set("stars", `${stars}`)
-		interaction.reply(`Set the Stars to ${stars}`)
+		interaction.reply(`Set the amount of stars needed to ${stars}!`)
 		} catch (err) {
 			interaction.reply(`Error: ${err}`);
 		}
@@ -71,19 +71,19 @@ export class UserCommand extends Command {
 				.addSubcommand((command) =>
 					command
 						.setName('channel')
-						.setDescription(`Set the channel that ${botConfig.botName} will post to`)
+						.setDescription(`Set the channel that ${botConfig.botName} will post to!`)
 						.addChannelOption((option) => option.setName('selector').setDescription('Select da channel').setRequired(true))
 				)
 				.addSubcommand((command) =>
 					command
 						.setName('stars')
-						.setDescription(`Set the stars that ${botConfig.botName} will respond to`)
+						.setDescription(`Set the amount of stars that ${botConfig.botName} will respond to!`)
 						.addNumberOption((option) => option.setName('amount').setDescription('amount of stars').setRequired(true))
 				)
 				.addSubcommand((command) =>
 					command
 						.setName('webhook')
-						.setDescription(`Configure the webhook that ${botConfig.botName} will post to.`)
+						.setDescription(`Configure the webhook that ${botConfig.botName} will use to post!.`)
 						.addBooleanOption((option) => option.setName('enabled').setDescription('toggle the webhook').setRequired(true))
 						.addStringOption((option) => option.setName("url").setDescription("Enter the webhook URL."))
 					)
