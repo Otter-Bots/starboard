@@ -83,7 +83,7 @@ export class UserCommand extends Command {
 				.addSubcommand((command) =>
 					command
 						.setName('webhook')
-						.setDescription(`Configure the webhook that ${botConfig.botName} will use to post!.`)
+						.setDescription(`Configure the webhook that ${botConfig.botName} will use to post!`)
 						.addBooleanOption((option) => option.setName('enabled').setDescription('toggle the webhook').setRequired(true))
 						.addStringOption((option) => option.setName("url").setDescription("Enter the webhook URL."))
 					)
