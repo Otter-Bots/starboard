@@ -1,4 +1,4 @@
-# Starboard
+# Starboard (Previously StarBot)
 An advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. 
 
 ## Contributions
