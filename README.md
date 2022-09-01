@@ -8,6 +8,6 @@ Starboard's code is open-sourced to allow the anyone to contribute to its develo
 Self-hosting a private instance of Starboard is allowed. However, trying to grow and/or provide support for a self-hosted instance of Starboard is not allowed. 
 
 ### Resources
-> [Discord Server](https://discord.gg/XtX9wx3qre)\
-> [Website](https://otterbots.xyz)
+> [Website](https://otterbots.xyz)\
+> [Discord Server](https://discord.gg/XtX9wx3qre)
 
