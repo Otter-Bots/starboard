@@ -9,5 +9,6 @@ Self-hosting a private instance of Starboard is allowed. However, trying to grow
 
 ### Resources
 > [Website](https://otterbots.xyz)\
+> [Invite Me!](https://discord.com/api/oauth2/authorize?client_id=984501396051214426&permissions=268512368&scope=bot%20applications.commands)\
 > [Discord Server](https://discord.gg/XtX9wx3qre)
 
