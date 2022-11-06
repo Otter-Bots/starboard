@@ -7,5 +7,5 @@ Starboard's code is open-sourced to allow the anyone to contribute to its develo
 ## Selfhosting
 You can self-host an instance of Starboard, but we will not provide support on how to do so.
 
-#### > [Invite Starboard!](https://discord.com/api/oauth2/authorize?client_id=984501396051214426&permissions=268512368&scope=bot%20applications.commands)
+#### [Invite Starboard!](https://discord.com/api/oauth2/authorize?client_id=984501396051214426&permissions=268512368&scope=bot%20applications.commands)
 
