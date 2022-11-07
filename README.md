@@ -1,11 +1,9 @@
 # Starboard (Previously StarBot)
-An advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. 
+An advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. Invite the bot [here.](https://discord.com/api/oauth2/authorize?client_id=984501396051214426&permissions=268512368&scope=bot%20applications.commands)
 
-## Contributions
-Starboard's code is open-sourced to allow the anyone to contribute to its development. You can contribute by submitting a pull request, however, we expect a clear description of what your pull request is about and what feature it adds/what problem it solves. If you have any questions, feel free to ask in our [Discord Server](https://discord.gg/XtX9wx3qre).
+## Contributiting & Selfhosting
+Find everything related to contributing and selfhosting [here](https://github.com/Otter-Bots/Starboard/blob/main/CONTRIBUTIONS.md).
 
-## Selfhosting
-You can self-host an instance of Starboard, but we will not provide support on how to do so.
-
-#### [Invite Starboard!](https://discord.com/api/oauth2/authorize?client_id=984501396051214426&permissions=268512368&scope=bot%20applications.commands)
+## Licensing 
+This project is licensed under the MIT License. View the full file [here](https://github.com/Otter-Bots/Starboard/blob/main/LICENSE).
 
