@@ -35,7 +35,8 @@ export class starboardClient extends SapphireClient {
             loadMessageCommandListeners: true,
             logger: {
                 level: LogLevel.Info
-            } 
+            },
+            shards: "auto", 
 		});
         this.starboardEvents = starboardEvents
 }
