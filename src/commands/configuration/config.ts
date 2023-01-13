@@ -20,7 +20,7 @@ export class UserCommand extends Command {
 				return interaction.reply('Invalid sub command');
 			}
 		} catch (err) {
-			interaction.reply(`Error: ${err}`);
+			await interaction.reply(`Error: ${err}`);
 		}
 	}
 
@@ -31,9 +31,9 @@ export class UserCommand extends Command {
 			channel.permissionOverwrites.create(channel.guild.roles.everyone, { AddReactions: false });
 			channel?.permissionOverwrites.create(`${this.container.client.application?.id}`, { SendMessages: true, ViewChannel: true });
 			await config.set('channelId', `${channel?.id}`);
-			interaction.reply(`Set the channel to ${channel}!`);
+			await interaction.reply(`Set the channel to ${channel}!`);
 		} catch (err) {
-			interaction.reply(`Error: ${err}`);
+			await interaction.reply(`Error: ${err}`);
 		}
 	}
 
@@ -42,9 +42,9 @@ export class UserCommand extends Command {
 			const config = await this.container.db.table(`config_${interaction.guildId}`);
 			const stars = interaction.options.getNumber('amount');
 			await config.set('stars', `${stars}`);
-			interaction.reply(`Set the amount of stars needed to ${stars}!`);
+			await interaction.reply(`Set the amount of stars needed to ${stars}!`);
 		} catch (err) {
-			interaction.reply(`Error: ${err}`);
+			await interaction.reply(`Error: ${err}`);
 		}
 	}
 	private async webhook(interaction: Command.ChatInputCommandInteraction) {
@@ -56,9 +56,9 @@ export class UserCommand extends Command {
 				const url = interaction.options.getString('url');
 				config.set('webhook_url', url);
 			}
-			interaction.reply(`Changed webhook settings!`);
+			await interaction.reply(`Changed webhook settings!`);
 		} catch (err) {
-			interaction.reply(`Error: ${err}`);
+			await interaction.reply(`Error: ${err}`);
 		}
 	}
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {

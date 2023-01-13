@@ -19,7 +19,7 @@ export class UserCommand extends Command {
 				{ name: 'Guilds', value: `${this.container.client.guilds.cache.size}`, inline: true }
 			)
 			.setTimestamp();
-		interaction.reply({ embeds: [embed] });
+		await interaction.reply({ embeds: [embed] });
 	}
 	public override registerApplicationCommands(registry: ApplicationCommandRegistry) {
 		registry.registerChatInputCommand((builder) => builder.setName(this.name).setDescription(this.description));

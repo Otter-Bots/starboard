@@ -6,4 +6,6 @@ import './lib/starboard/aug.js';
 import { starboardClient } from './lib/starboard/aug.js';
 const client = new starboardClient();
 ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior.Overwrite);
-client.login();
+(async () => {
+	await client.login();
+})();
