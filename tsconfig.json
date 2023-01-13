@@ -4,9 +4,9 @@
 		"rootDir": "src",
 		"outDir": "dist",
 		"tsBuildInfoFile": "dist/.tsbuildinfo",
-        "module": "ES2020",
-        "moduleResolution": "Node", 
-        "allowSyntheticDefaultImports": true,
+		"module": "ES2020",
+		"moduleResolution": "Node",
+		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true
 	},
 	"include": ["src"]
