@@ -10,7 +10,7 @@ export class UserCommand extends Command {
         const embed = new EmbedBuilder()
         .setColor(Colors.Orange)
         .setTitle(`${botConfig.botName} | Stats`)
-        .setDescription(`${botConfig.botName} is an advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. `)
+        .setDescription(`${botConfig.botName} is an advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. Find the source code at https://git.otterbots.xyz/starboard.`)
         .addFields(
             { name: 'Users', value: `${this.container.client.users.cache.size}`, inline: true },
             { name: 'Channels', value: `${this.container.client.channels.cache.size}`, inline: true },
