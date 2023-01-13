@@ -26,7 +26,7 @@ export class UserEvent extends Listener {
       } else {
         if (reaction.count >= await config.get("stars")) {
           if (await config.get("channelId")  == null) {
-            this.container.starboardEvents.emit("starboardChannelNull")
+            this.container.starboardEvents.emit("starboardChannelNull", reaction)
           } else {
             this.container.starboardEvents.emit("starboardNewMsg", reaction)
           }

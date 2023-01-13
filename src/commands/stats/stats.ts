@@ -1,14 +1,14 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, CommandOptions, ApplicationCommandRegistry }from "@sapphire/framework";
 import { botConfig } from '../../config.js';
-import { CommandInteraction, MessageEmbed} from 'discord.js';
+import { CommandInteraction, EmbedBuilder, Colors} from 'discord.js';
 @ApplyOptions<CommandOptions>({
 	description: 'Get stats about Starboard!',
 })
 export class UserCommand extends Command {
 	public async chatInputRun(interaction: CommandInteraction) {
-        const embed = new MessageEmbed()
-        .setColor('RANDOM')
+        const embed = new EmbedBuilder()
+        .setColor(Colors.Orange)
         .setTitle(`${botConfig.botName} | Stats`)
         .setDescription(`${botConfig.botName} is an advanced starboard bot with many useful features that are designed to carry out your server's starboard needs. `)
         .addFields(

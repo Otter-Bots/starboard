@@ -2,6 +2,7 @@ import { starboardUtils } from "./utils.js";
 import { container, SapphireClient, LogLevel } from "@sapphire/framework";
 import { starboardEvents } from "./event.js";
 import type EventEmitter from "events";
+import { GatewayIntentBits, Partials } from "discord.js";
 
 const starboard = {
     utils: []
@@ -21,7 +22,7 @@ export class starboardClient extends SapphireClient {
     public starboardEvents: EventEmitter;
     public constructor() {
 		super({
-            intents: [
+/*             intents: [
                 'GUILDS',
                 'GUILD_MESSAGES',
                 'GUILD_PRESENCES',
@@ -30,6 +31,16 @@ export class starboardClient extends SapphireClient {
             partials: [
                 'REACTION',
                 'MESSAGE'
+            ], */
+            intents: [
+                GatewayIntentBits.Guilds,
+                GatewayIntentBits.GuildMessages,
+                GatewayIntentBits.GuildPresences,
+                GatewayIntentBits.GuildMessageReactions
+            ],
+            partials: [
+                Partials.Reaction,
+                Partials.Message
             ],
             loadDefaultErrorListeners: true,
             loadMessageCommandListeners: true,

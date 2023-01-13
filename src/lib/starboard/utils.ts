@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from "discord.js";
+import { Message, EmbedBuilder, Colors, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 //import { botConfig } from "../../config.js";
 import { container } from "@sapphire/framework";
 
@@ -13,16 +13,30 @@ class utils {
         //    .setFooter({text: `Powered by: ${botConfig.botName}`})
         //    return embed
         //} else {
-            const embed = new MessageEmbed()
-            .setColor('RANDOM')
+            /* const embed = new EmbedBuilder()
+            .setColor(Colors.Orange)
             .setTitle("Starboard")
             .setDescription(message.content)
             .addFields(
                 {name: "Stars", value: `${stars}`, inline: true},
                 {name: "Message URL", value: `${message.url}`, inline: false}
             )
+            .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL()}) */
+            const embed = new EmbedBuilder()
+            .setColor(Colors.Orange)
+            .setTitle(`:star: ${stars}`)
+            .setDescription(message.content)
             .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL()})
-            return embed
+            .setFooter({text: `Message ID: ${message.id}`})
+            .setTimestamp()
+            const row = new ActionRowBuilder<ButtonBuilder>()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel("Original Message")
+                        .setURL(message.url)
+                )
+            return { embeds: [embed], components: [row] }
        // }
     }
     public async trackedAllCheck(guildId: string | null) {

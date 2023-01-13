@@ -1,15 +1,15 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { Command, CommandOptions, ApplicationCommandRegistry }from "@sapphire/framework";
 import { botConfig } from '../../config.js';
-import type { CommandInteraction, TextChannel } from 'discord.js';
+import type { TextChannel } from 'discord.js';
 @ApplyOptions<CommandOptions>({
 	description: 'Configure StartBoard',
 	preconditions: ['serverOwnerOnly']
 })
 export class UserCommand extends Command {
-	public async chatInputRun(interaction: CommandInteraction) {
+	public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
 		try {
-		const subcommand = interaction.options.getSubcommand(true);
+		const subcommand = interaction.options.getSubcommand();
 		if (subcommand === 'channel') {
 		  return await this.channel(interaction);
 		} else if (subcommand === 'stars') {
@@ -26,12 +26,12 @@ export class UserCommand extends Command {
 	}
 	}
 
-	private async channel(interaction: CommandInteraction) {
+	private async channel(interaction: Command.ChatInputCommandInteraction) {
 		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const channel = interaction.options.getChannel('selector') as TextChannel;
-		channel.permissionOverwrites.create(channel.guild.roles.everyone, {ADD_REACTIONS: false});
-		channel?.permissionOverwrites.create(`${this.container.client.application?.id}`, { SEND_MESSAGES: true, VIEW_CHANNEL: true });
+		channel.permissionOverwrites.create(channel.guild.roles.everyone, {AddReactions: false});
+		channel?.permissionOverwrites.create(`${this.container.client.application?.id}`, { SendMessages: true, ViewChannel: true });
 		await config.set("channelId", `${channel?.id}`)
 		interaction.reply(`Set the channel to ${channel}!`)
 		} catch (err) {
@@ -39,7 +39,7 @@ export class UserCommand extends Command {
 		}
 	}
 	
-	private async stars(interaction: CommandInteraction) {
+	private async stars(interaction: Command.ChatInputCommandInteraction) {
 		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const stars = interaction.options.getNumber("amount");
@@ -49,7 +49,7 @@ export class UserCommand extends Command {
 			interaction.reply(`Error: ${err}`);
 		}
 	}
-	private async webhook(interaction: CommandInteraction) {
+	private async webhook(interaction: Command.ChatInputCommandInteraction) {
 		try {
 		const config = await this.container.db.table(`config_${interaction.guildId}`);
 		const enabled = interaction.options.getBoolean('enabled');

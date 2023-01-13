@@ -14,16 +14,14 @@ export class UserEvent extends Listener {
       const webhook = await config.get("webhook_url");
       const embed = this.container.starboard.utils.embed(reaction.message, reaction.count);
       const webhookClient = new WebhookClient({url: webhook});
-      await webhookClient.editMessage(await tracked.get(`_${reaction.message.id}`), {
-        embeds: [embed]
-      });
+      await webhookClient.editMessage(await tracked.get(`_${reaction.message.id}`), embed);
     } else {
     const { client } = this.container
     const msgId = await tracked.get(`_${reaction.message.id}`);
     const channelId = await config.get("channelId");
     const channel = client.channels.cache.get(channelId) as TextChannel;
     const embed = this.container.starboard.utils.embed(reaction.message, `${reaction.count}`, config);
-    await (await channel?.messages.fetch(msgId)).edit({ embeds: [embed]});
+    await (await channel?.messages.fetch(msgId)).edit(embed);
     }
   } catch (err) {
     reaction.message.channel.send(`Error: ${err}`);
