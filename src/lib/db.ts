@@ -12,13 +12,14 @@ if (process.env.NODE_ENV == 'dev') {
 	container.db = db;
 } else {
 	const { DB_HOST, DB_USER, DB_PASS, DB_NAME } = process.env;
-	// @ts-expect-error
+
 	const mysql = new MySQLDriver({
 		host: DB_HOST,
 		user: DB_USER,
 		password: DB_PASS,
 		database: DB_NAME
-	})(async () => {
+	});
+	(async () => {
 		await mysql.connect();
 		const db = new QuickDB({ driver: mysql });
 		container.db = db;
