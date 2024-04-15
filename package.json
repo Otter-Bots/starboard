@@ -32,7 +32,7 @@
 		"@sapphire/prettier-config": "^1.4.5",
 		"@sapphire/ts-config": "3.3.4",
 		"@types/better-sqlite3": "7.6.9",
-		"@types/figlet": "1.5.5",
+		"@types/figlet": "1.5.8",
 		"@types/gradient-string": "1.1.2",
 		"@types/node": "18.19.31",
 		"husky": "^8.0.3",
