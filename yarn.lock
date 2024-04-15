@@ -235,13 +235,12 @@
     tslib "^2.4.0"
 
 "@sapphire/plugin-logger@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@sapphire/plugin-logger/-/plugin-logger-3.0.1.tgz#4b411eebb4dd49ad03b89dc93f5280aaa8fbf2d0"
-  integrity sha512-sGAYL16bIe8SrUk8k+HOFGVWppSYi8T0F4T+hVCfYw9eiqTvqy5wPQcrzmd5hkvGINb8Ob8INNEl0In7PxXT6Q==
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@sapphire/plugin-logger/-/plugin-logger-3.0.7.tgz#9213b9dd2ecb7de6156503380318da707d06e91a"
+  integrity sha512-QNQRHMgvyxhBNdYBktIfAQvNdsvzYd6vVWCvnggrcN56mvXJyolZaPkDcUNh3PdtjcB7XTChpynbLlTby2vsyQ==
   dependencies:
-    "@sapphire/timestamp" "^1.0.0"
-    colorette "^2.0.19"
-    tslib "^2.4.0"
+    "@sapphire/timestamp" "^1.0.1"
+    colorette "^2.0.20"
 
 "@sapphire/prettier-config@^1.4.5":
   version "1.4.5"
@@ -287,10 +286,10 @@
   resolved "https://registry.yarnpkg.com/@sapphire/timer-manager/-/timer-manager-1.0.0.tgz#e8ecf15a7042ee611048b4f90fab1399653d3934"
   integrity sha512-vxxnv75QPMGKt6IB6nL2xRJfwzcUQ9DBGzJLg6G8eS5O4u7j3IR/yr/GQsa4gIpjw6kQOgn8lUdnSTlpnERTbQ==
 
-"@sapphire/timestamp@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sapphire/timestamp/-/timestamp-1.0.0.tgz#572571e8cfc3515265d719704fb2818135f3ad31"
-  integrity sha512-80g0xYP4zxsgNizMO0HVf+LcM1mD/jxke4feSytDzw8u1pEPr1APfIz3Ix7JB9VI113p0KjLBMywl+ceaN7jrw==
+"@sapphire/timestamp@^1.0.1":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sapphire/timestamp/-/timestamp-1.0.3.tgz#dad55aaa54cc5b22e5952dd8cb8d6c182f2a12fd"
+  integrity sha512-I2TwqlLDA2Uu576VUgyBaT1gP1WSWPxeW3NqFxsSJfwFyvzXkTzyQiYce0eWMpM6BdBCq7Dddg+Yayls/5K1RA==
 
 "@sapphire/ts-config@3.3.4":
   version "3.3.4"
